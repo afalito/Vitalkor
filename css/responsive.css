@@ -1,0 +1,316 @@
+/* Optimizaciones adicionales para diseño responsive */
+
+/* Variables globales */
+:root {
+  --mobile-padding: 15px;
+  --tablet-padding: 30px;
+}
+
+/* Mejoras generales para responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Optimizaciones para header */
+@media (max-width: 992px) {
+  .header-container {
+    padding: 10px var(--mobile-padding);
+  }
+  
+  .logo {
+    height: 40px;
+  }
+  
+  .cta-button {
+    padding: 8px 15px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .header-container {
+    padding: 10px var(--mobile-padding);
+  }
+  
+  .nav-menu.active {
+    padding: 15px var(--mobile-padding);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .nav-menu li {
+    width: 100%;
+    text-align: center;
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  }
+  
+  .nav-menu li:last-child {
+    border-bottom: none;
+  }
+}
+
+/* Optimizaciones para hero section */
+@media (max-width: 992px) {
+  .hero {
+    padding: 100px 0 60px;
+  }
+  
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  
+  .hero p {
+    font-size: 1.1rem;
+    padding: 0 var(--tablet-padding);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 90px 0 50px;
+  }
+  
+  .hero h1 {
+    font-size: 1.8rem;
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .hero p {
+    font-size: 1rem;
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .hero-image {
+    margin-top: 20px;
+  }
+}
+
+/* Optimizaciones para secciones de contenido */
+@media (max-width: 992px) {
+  .section-title {
+    margin-bottom: 40px;
+    padding: 0 var(--tablet-padding);
+  }
+  
+  .section-title h2 {
+    font-size: 1.8rem;
+  }
+  
+  .section-title p {
+    font-size: 1rem;
+  }
+  
+  .benefits, .about-product, .ingredients, .testimonials, .faq, .contact, .promotions {
+    padding: 60px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    margin-bottom: 30px;
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .section-title h2 {
+    font-size: 1.6rem;
+  }
+  
+  .benefits, .about-product, .ingredients, .testimonials, .faq, .contact, .promotions {
+    padding: 50px 0;
+  }
+  
+  .benefit-card, .ingredient-card, .testimonial-card {
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .benefit-icon {
+    width: 60px;
+    height: 60px;
+    margin-bottom: 15px;
+  }
+  
+  .benefit-icon i {
+    font-size: 30px;
+  }
+  
+  .product-content {
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .ingredients-container, .testimonials-container {
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .faq-container {
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .faq-question {
+    padding: 15px;
+    font-size: 0.95rem;
+  }
+  
+  .faq-answer {
+    font-size: 0.9rem;
+  }
+  
+  .faq-answer.active {
+    padding: 15px;
+  }
+  
+  .contact-container {
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .contact-form {
+    padding: 20px;
+  }
+  
+  .form-control {
+    margin-bottom: 15px;
+  }
+  
+  .form-control label {
+    font-size: 0.9rem;
+  }
+  
+  .form-control input, 
+  .form-control textarea, 
+  .form-control select {
+    padding: 8px;
+    font-size: 0.9rem;
+  }
+  
+  .contact-form button {
+    padding: 10px;
+  }
+}
+
+/* Optimizaciones para sección de promociones */
+@media (max-width: 992px) {
+  .price-cards {
+    flex-direction: column;
+    align-items: center;
+    padding: 0 var(--tablet-padding);
+  }
+  
+  .price-card {
+    width: 100%;
+    max-width: 400px;
+    margin-bottom: 30px;
+  }
+  
+  .price-card:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .price-cards {
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .price-card {
+    padding: 25px 20px;
+  }
+  
+  .price {
+    font-size: 1.8rem;
+  }
+}
+
+/* Optimizaciones para footer */
+@media (max-width: 992px) {
+  footer {
+    padding: 50px 0 25px;
+  }
+  
+  .footer-content {
+    gap: 30px;
+    padding: 0 var(--tablet-padding);
+  }
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 40px 0 20px;
+  }
+  
+  .footer-content {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 0 var(--mobile-padding);
+  }
+  
+  .footer-column h3 {
+    margin-bottom: 15px;
+  }
+  
+  .footer-bottom {
+    padding-top: 20px;
+    font-size: 0.8rem;
+  }
+}
+
+/* Optimizaciones para dispositivos muy pequeños */
+@media (max-width: 480px) {
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+  
+  .section-title h2 {
+    font-size: 1.4rem;
+  }
+  
+  .benefit-card, .ingredient-card, .testimonial-card, .price-card {
+    padding: 15px;
+  }
+  
+  .testimonial-image {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .testimonial-info h3 {
+    font-size: 1rem;
+  }
+  
+  .testimonial-stars {
+    font-size: 0.8rem;
+  }
+}
+
+/* Mejoras para imágenes en diferentes dispositivos */
+.hero-image, .product-image img {
+  transition: transform 0.3s ease;
+}
+
+@media (min-width: 993px) {
+  .hero-image:hover, .product-image img:hover {
+    transform: scale(1.02);
+  }
+}
+
+/* Optimizaciones para orientación landscape en móviles */
+@media (max-height: 500px) and (orientation: landscape) {
+  .hero {
+    padding: 70px 0 40px;
+  }
+  
+  .hero-content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 30px;
+  }
+  
+  .hero-text {
+    flex: 1;
+  }
+  
+  .hero-image-container {
+    flex: 1;
+  }
+}

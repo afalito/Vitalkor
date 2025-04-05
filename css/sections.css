@@ -1,0 +1,299 @@
+/* Estilos adicionales para las secciones de producto */
+
+/* Sección de ingredientes */
+.ingredients {
+  padding: 80px 0;
+  background-color: var(--background-color);
+}
+
+.ingredients-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.ingredient-card {
+  flex: 1;
+  min-width: 300px;
+  background-color: var(--accent-color);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+}
+
+.ingredient-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.ingredient-card h3 i {
+  margin-right: 10px;
+}
+
+.ingredient-list {
+  list-style: none;
+}
+
+.ingredient-list li {
+  margin-bottom: 15px;
+  padding-left: 25px;
+  position: relative;
+}
+
+.ingredient-list li:before {
+  content: "•";
+  color: var(--primary-color);
+  position: absolute;
+  left: 0;
+  font-size: 1.2em;
+}
+
+/* Sección de testimonios */
+.testimonials {
+  padding: 80px 0;
+  background-color: var(--accent-color);
+}
+
+.testimonials-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.testimonial-card {
+  flex: 1;
+  min-width: 300px;
+  background-color: var(--background-color);
+  border-radius: var(--border-radius);
+  padding: 30px;
+  box-shadow: var(--box-shadow);
+}
+
+.testimonial-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.testimonial-image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 15px;
+}
+
+.testimonial-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.testimonial-info h3 {
+  margin-bottom: 5px;
+  color: var(--secondary-color);
+}
+
+.testimonial-stars {
+  color: #FFD700;
+}
+
+.testimonial-text {
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Sección de preguntas frecuentes */
+.faq {
+  padding: 80px 0;
+  background-color: var(--background-color);
+}
+
+.faq-container {
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+.faq-item {
+  margin-bottom: 20px;
+  border-radius: var(--border-radius);
+  overflow: hidden;
+  box-shadow: var(--box-shadow);
+}
+
+.faq-question {
+  background-color: var(--accent-color);
+  padding: 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+}
+
+.faq-question i {
+  transition: transform 0.3s ease;
+}
+
+.faq-question.active i {
+  transform: rotate(180deg);
+}
+
+.faq-answer {
+  background-color: var(--background-color);
+  padding: 0 20px;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.faq-answer.active {
+  padding: 20px;
+  max-height: 500px;
+}
+
+/* Sección de contacto */
+.contact {
+  padding: 80px 0;
+  background-color: var(--accent-color);
+}
+
+.contact-container {
+  display: flex;
+  gap: 50px;
+  margin-top: 40px;
+}
+
+.contact-info {
+  flex: 1;
+}
+
+.contact-info h3 {
+  margin-bottom: 20px;
+  color: var(--secondary-color);
+}
+
+.contact-details {
+  margin-bottom: 30px;
+}
+
+.contact-details p {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.contact-details i {
+  margin-right: 10px;
+  color: var(--primary-color);
+  width: 20px;
+}
+
+.contact-form {
+  flex: 1;
+  background-color: var(--background-color);
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.form-control {
+  margin-bottom: 20px;
+}
+
+.form-control label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-control input,
+.form-control textarea,
+.form-control select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.form-control textarea {
+  height: 120px;
+  resize: vertical;
+}
+
+.form-control.error input,
+.form-control.error textarea,
+.form-control.error select {
+  border-color: #e74c3c;
+}
+
+.error-message {
+  color: #e74c3c;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.success-message {
+  background-color: #2ecc71;
+  color: white;
+  padding: 15px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.contact-form button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+.contact-form button:hover {
+  background-color: #00A896;
+}
+
+.contact-form.loading button {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Responsive para secciones adicionales */
+@media (max-width: 992px) {
+  .contact-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 768px) {
+  .ingredients-container,
+  .testimonials-container {
+    flex-direction: column;
+  }
+  
+  .ingredient-card,
+  .testimonial-card {
+    min-width: 100%;
+  }
+}
+
+@media (max-width: 576px) {
+  .faq-question {
+    font-size: 0.9rem;
+    padding: 15px;
+  }
+  
+  .contact-form {
+    padding: 20px;
+  }
+}

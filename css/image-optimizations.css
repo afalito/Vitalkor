@@ -1,0 +1,136 @@
+/* Mejoras adicionales para optimización de imágenes */
+
+/* Optimización de imágenes para diferentes dispositivos */
+.optimize-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Contenedor para imágenes con ratio de aspecto fijo */
+.image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+}
+
+.image-container img {
+  transition: transform 0.3s ease;
+}
+
+/* Efectos hover solo en dispositivos no táctiles */
+@media (hover: hover) {
+  .image-container:hover img {
+    transform: scale(1.05);
+  }
+}
+
+/* Optimizaciones para imágenes de testimonios */
+.testimonial-image {
+  border: 3px solid var(--primary-color);
+}
+
+/* Mejoras para imágenes de productos */
+.product-showcase {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.product-item {
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.product-item:hover {
+  transform: translateY(-5px);
+}
+
+.product-item img {
+  max-width: 100%;
+  border-radius: var(--border-radius);
+  margin-bottom: 15px;
+  box-shadow: var(--box-shadow);
+}
+
+.product-item h3 {
+  margin-bottom: 10px;
+  color: var(--secondary-color);
+}
+
+/* Optimizaciones para imágenes de fondo */
+.bg-image-section {
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  color: var(--light-text);
+  padding: 100px 0;
+}
+
+.bg-image-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 1;
+}
+
+.bg-image-section .container {
+  position: relative;
+  z-index: 2;
+}
+
+/* Ajustes responsive para imágenes */
+@media (max-width: 992px) {
+  .product-showcase {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .bg-image-section {
+    background-attachment: scroll;
+    padding: 80px 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .product-showcase {
+    grid-template-columns: 1fr;
+  }
+  
+  .bg-image-section {
+    padding: 60px 0;
+  }
+  
+  .testimonial-image {
+    border-width: 2px;
+  }
+}
+
+/* Optimizaciones para carga de imágenes */
+.lazy-load {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.lazy-load.loaded {
+  opacity: 1;
+}
+
+/* Mejoras para accesibilidad de imágenes */
+img {
+  alt: attr(alt);
+}
+
+/* Mejoras para imágenes en modo oscuro (si se implementa) */
+@media (prefers-color-scheme: dark) {
+  .image-container {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  }
+}
