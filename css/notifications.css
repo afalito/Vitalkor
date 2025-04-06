@@ -74,6 +74,66 @@
   opacity: 1;
 }
 
+/* Mensajes de error en línea del formulario */
+.error-message {
+  color: #dc3545;
+  font-size: 0.8rem;
+  margin-top: 5px;
+  margin-bottom: 0;
+  display: block;
+  animation: slideIn 0.3s ease-out;
+}
+
+.form-control.error input,
+.form-control.error textarea,
+.form-control.error select {
+  border-color: #dc3545;
+}
+
+/* Mensaje de éxito en línea */
+.success-message {
+  background-color: rgba(240, 255, 240, 0.95);
+  color: #0d6832;
+  padding: 12px 16px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  font-weight: 500;
+  border-left: 4px solid #0d6832;
+  animation: slideIn 0.3s ease-out;
+}
+
+.success-message i {
+  margin-right: 8px;
+  font-size: 16px;
+}
+
+/* Estado de carga del formulario */
+.contact-form.loading {
+  opacity: 0.6;
+  pointer-events: none;
+  position: relative;
+}
+
+.contact-form.loading::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 30px;
+  height: 30px;
+  margin: -15px 0 0 -15px;
+  border: 3px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  border-top-color: var(--primary-color);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
 /* Estilos para dispositivos móviles */
 @media (max-width: 576px) {
   .toast-notification {
