@@ -3,15 +3,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.getElementById('contact-form');
     
     if (contactForm) {
+        // Validación del formulario antes de enviar
         contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Validación del formulario
-            if (validateForm()) {
-                // Enviar formulario usando Formspree
-                sendFormData();
+            if (!validateForm()) {
+                e.preventDefault(); // Detener envío solo si hay errores
+            } else {
+                // Mostrar indicador de carga
+                contactForm.classList.add('loading');
             }
         });
+
+        // Escuchar por la URL para detectar redirección de Formspree después del envío
+        if (window.location.search.includes('submitted=true') || 
+            window.location.hash === '#contacto' || 
+            window.location.hash.includes('submitted=true')) {
+            showSuccessMessage();
+        }
     }
     
     // Función de validación del formulario
@@ -21,6 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = document.getElementById('email');
         const phone = document.getElementById('phone');
         const message = document.getElementById('message');
+        
+        // Limpiar errores previos
+        const allErrors = document.querySelectorAll('.error-message');
+        allErrors.forEach(error => error.remove());
         
         // Validar nombre
         if (!name.value.trim()) {
@@ -63,27 +74,19 @@ document.addEventListener('DOMContentLoaded', function() {
     // Función para mostrar errores
     function showError(input, message) {
         const formControl = input.parentElement;
-        const errorElement = formControl.querySelector('.error-message') || document.createElement('div');
+        const errorElement = document.createElement('div');
         
         errorElement.className = 'error-message';
         errorElement.textContent = message;
         
-        if (!formControl.querySelector('.error-message')) {
-            formControl.appendChild(errorElement);
-        }
-        
+        formControl.appendChild(errorElement);
         formControl.className = 'form-control error';
+        input.focus();
     }
     
     // Función para eliminar errores
     function removeError(input) {
         const formControl = input.parentElement;
-        const errorElement = formControl.querySelector('.error-message');
-        
-        if (errorElement) {
-            errorElement.remove();
-        }
-        
         formControl.className = 'form-control';
     }
     
@@ -100,52 +103,14 @@ document.addEventListener('DOMContentLoaded', function() {
         return re.test(phone);
     }
     
-    // Función para enviar los datos del formulario
-    function sendFormData() {
-        const formData = new FormData(contactForm);
-        contactForm.classList.add('loading');
-        
-        // Enviar datos a Formspree
-        fetch(contactForm.action, {
-            method: 'POST',
-            body: formData,
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(response => {
-            // Verificar si la respuesta es exitosa (código 200-299)
-            if (!response.ok) {
-                throw new Error(`Error de servidor: ${response.status}`);
-            }
-            return response.json();
-        })
-        .then(data => {
-            contactForm.classList.remove('loading');
-            
-            if (data.ok) {
-                // Mostrar mensaje de éxito
-                contactForm.reset();
-                
-                // Mostrar mensaje de éxito con el sistema de notificaciones
-                showSuccessMessage();
-            } else {
-                // Manejo de errores de Formspree
-                const errorMsg = data.error || 'Hubo un problema al enviar el formulario. Por favor, inténtelo nuevamente.';
-                window.notifications.error(errorMsg, 5000);
-            }
-        })
-        .catch(error => {
-            contactForm.classList.remove('loading');
-            console.error('Error:', error);
-            
-            // Mostrar error de conexión con el sistema de notificaciones
-            window.notifications.error('Error de conexión. Por favor, verifica tu conexión a Internet e inténtalo de nuevo.', 5000);
-        });
-    }
-    
     // Función para mostrar mensaje de éxito
     function showSuccessMessage() {
+        // Limpiar el formulario
+        if (contactForm) {
+            contactForm.reset();
+            contactForm.classList.remove('loading');
+        }
+        
         try {
             // Intentar usar el sistema de notificaciones flotantes
             window.notifications.success('¡Mensaje enviado con éxito! Te contactaremos pronto.', 4000);
@@ -156,14 +121,23 @@ document.addEventListener('DOMContentLoaded', function() {
             successMessage.innerHTML = '<i class="fas fa-check-circle"></i> ¡Mensaje enviado con éxito! Te contactaremos pronto.';
             
             // Insertar al comienzo del formulario
-            contactForm.insertAdjacentElement('beforebegin', successMessage);
+            if (contactForm) {
+                contactForm.insertAdjacentElement('beforebegin', successMessage);
+            } else {
+                const contactSection = document.getElementById('contacto');
+                if (contactSection) {
+                    contactSection.querySelector('.section-title').insertAdjacentElement('afterend', successMessage);
+                }
+            }
             
             // Eliminar mensaje después de 4 segundos
             setTimeout(() => {
                 successMessage.style.opacity = '0';
                 successMessage.style.transition = 'opacity 0.3s ease';
                 setTimeout(() => {
-                    successMessage.remove();
+                    if (successMessage.parentNode) {
+                        successMessage.remove();
+                    }
                 }, 300);
             }, 4000);
         }

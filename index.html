@@ -361,7 +361,7 @@
                     </div>
                     <div class="form-control">
                         <label for="email">Correo Electrónico</label>
-                        <input type="email" id="email" name="_replyto" placeholder="tucorreo@ejemplo.com" required>
+                        <input type="email" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
                     </div>
                     <div class="form-control">
                         <label for="phone">Teléfono</label>
@@ -380,9 +380,11 @@
                         <label for="message">Mensaje</label>
                         <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
                     </div>
-                    <!-- Campo oculto para validación anti-spam de Formspree -->
+                    <!-- Configuración para Formspree -->
                     <input type="hidden" name="_subject" value="Nuevo mensaje de Vitalkor">
                     <input type="text" name="_gotcha" style="display:none">
+                    <!-- URL completa absoluta para redireccionamiento -->
+                    <input type="hidden" name="_next" value="https://vitalkor.com/#contacto?submitted=true">
                     <button type="submit">Enviar Mensaje</button>
                 </form>
             </div>
