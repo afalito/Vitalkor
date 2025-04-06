@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Instrucciones para Favicon Vitalkor</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; line-height: 1.6; }
+        h1 { color: #00b2a9; }
+        code { background: #f4f4f4; padding: 2px 5px; }
+        pre { background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto; }
+    </style>
+</head>
+<body>
+    <h1>Instrucciones para Favicon de Vitalkor</h1>
+    
+    <h2>Archivos necesarios</h2>
+    <p>Para una implementación completa de favicon, se recomienda generar los siguientes archivos:</p>
+    <ul>
+        <li><code>favicon.ico</code> - 16x16, 32x32 y 48x48 pixels</li>
+        <li><code>favicon.svg</code> - Vector SVG para mejor escalabilidad</li>
+        <li><code>apple-touch-icon.png</code> - 180x180 pixels</li>
+        <li><code>android-chrome-192x192.png</code> - 192x192 pixels</li>
+        <li><code>android-chrome-512x512.png</code> - 512x512 pixels</li>
+        <li><code>favicon-16x16.png</code> - 16x16 pixels</li>
+        <li><code>favicon-32x32.png</code> - 32x32 pixels</li>
+    </ul>
+    
+    <h2>Implementación</h2>
+    <p>Por el momento, hemos creado:</p>
+    <ul>
+        <li>Un <code>favicon.svg</code> con un diseño básico de huella de mascota en color corporativo</li>
+        <li>Un archivo <code>site.webmanifest</code> para configuración básica</li>
+    </ul>
+    
+    <p>Para completar la implementación, se recomienda:</p>
+    <ol>
+        <li>Usar una herramienta como <a href="https://realfavicongenerator.net/" target="_blank">realfavicongenerator.net</a> para generar todos los tamaños necesarios a partir del svg proporcionado</li>
+        <li>Subir los archivos generados a la carpeta <code>/favicon/</code></li>
+        <li>Ya hemos implementado los enlaces necesarios en el <code>&lt;head&gt;</code> del HTML</li>
+    </ol>
+    
+    <h2>Código implementado en index.html</h2>
+    <p>Se ha agregado el siguiente código al <code>&lt;head&gt;</code> del HTML:</p>
+    <pre>
+&lt;link rel="apple-touch-icon" sizes="180x180" href="/favicon/apple-touch-icon.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="32x32" href="/favicon/favicon-32x32.png"&gt;
+&lt;link rel="icon" type="image/png" sizes="16x16" href="/favicon/favicon-16x16.png"&gt;
+&lt;link rel="icon" type="image/svg+xml" href="/favicon/favicon.svg"&gt;
+&lt;link rel="manifest" href="/favicon/site.webmanifest"&gt;
+&lt;meta name="theme-color" content="#00b2a9"&gt;
+    </pre>
+    
+    <h2>Información de color</h2>
+    <p>El color principal de la marca que hemos usado es: <code>#00b2a9</code> (turquesa)</p>
+</body>
+</html>
