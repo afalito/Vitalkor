@@ -118,31 +118,47 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Mostrar mensaje de éxito
                 contactForm.reset();
                 
-                const successMessage = document.createElement('div');
-                successMessage.className = 'success-message';
-                successMessage.textContent = '¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.';
-                
-                contactForm.parentNode.insertBefore(successMessage, contactForm);
-                
-                // Eliminar mensaje después de 5 segundos
-                setTimeout(() => {
-                    successMessage.remove();
-                }, 5000);
+                // Mostrar mensaje de éxito inline y con el sistema de notificaciones
+                try {
+                    // Intentar usar el sistema de notificaciones flotantes
+                    window.notifications.success('¡Mensaje enviado con éxito!', 4000);
+                } catch (err) {
+                    // Fallback: mostrar mensaje inline con el nuevo estilo
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'success-message';
+                    successMessage.innerHTML = '<i class="fas fa-check-circle" style="margin-right: 8px; font-size: 14px;"></i>Mensaje enviado con éxito';
+                    
+                    // Insertar al comienzo del formulario
+                    contactForm.parentNode.insertBefore(successMessage, contactForm);
+                    
+                    // Eliminar mensaje después de 4 segundos
+                    setTimeout(() => {
+                        successMessage.style.opacity = '0';
+                        successMessage.style.transition = 'opacity 0.3s ease';
+                        setTimeout(() => {
+                            successMessage.remove();
+                        }, 300);
+                    }, 4000);
+                }
             } else {
-                // Mostrar errores si los hay
+                // Mostrar errores usando el nuevo sistema de notificaciones
                 if (data.errors) {
-                    data.errors.forEach(error => {
-                        alert(error);
-                    });
+                    // Si hay múltiples errores, mostrar mensaje con el primer error
+                    const errorMsg = "Por favor corrige los siguientes campos: " + data.errors[0];
+                    window.notifications.error(errorMsg, 5000);
                 } else {
-                    alert(data.message || 'Error al enviar el mensaje. Por favor, inténtelo de nuevo más tarde.');
+                    // Mostrar mensaje de error general
+                    const errorMsg = data.message || 'Error al enviar el mensaje. Por favor, inténtelo de nuevo más tarde.';
+                    window.notifications.error(errorMsg, 5000);
                 }
             }
         })
         .catch(error => {
             contactForm.classList.remove('loading');
             console.error('Error:', error);
-            alert('Error al enviar el mensaje. Por favor, inténtelo de nuevo más tarde.');
+            
+            // Mostrar error de conexión con el nuevo sistema de notificaciones
+            window.notifications.error('Error de conexión. Por favor, verifica tu conexión a Internet e inténtalo de nuevo.', 5000);
         });
     }
 });

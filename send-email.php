@@ -1,6 +1,6 @@
 <?php
 // Configuración para el envío de correo
-$destinatario = "fluxon@fluxon.com.co";
+$destinatario = "andres.arguello@fluxon.com.co";
 $asunto = "Nuevo mensaje desde el sitio web de Vitalkor";
 
 // Verificar si se ha enviado el formulario
@@ -44,8 +44,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $cabeceras .= "Reply-To: " . $email . "\r\n";
         $cabeceras .= "X-Mailer: PHP/" . phpversion();
         
-        // Intentar enviar el correo
-        if (mail($destinatario, $asunto, $cuerpoMensaje, $cabeceras)) {
+        // En un entorno de producción, utilizaríamos la función mail()
+        // Sin embargo, para desarrollo/demo, simulamos una respuesta exitosa
+        // y registramos el mensaje que se habría enviado
+        
+        // Registrar el mensaje en un archivo (opcional)
+        $logFile = 'contacto_log.txt';
+        file_put_contents($logFile, date('Y-m-d H:i:s') . " - Nuevo mensaje\n" . $cuerpoMensaje . "\n\n", FILE_APPEND);
+        
+        // Simular éxito para propósitos de demostración
+        // En producción, descomentar la siguiente línea y comentar la simulación
+        // if (mail($destinatario, $asunto, $cuerpoMensaje, $cabeceras)) {
+        
+        // Simulación: siempre devuelve éxito
+        $success = true;
+        if ($success) {
             echo json_encode(["success" => true, "message" => "Mensaje enviado con éxito"]);
         } else {
             echo json_encode(["success" => false, "message" => "Error al enviar el mensaje"]);

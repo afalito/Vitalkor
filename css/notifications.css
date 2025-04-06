@@ -1,0 +1,86 @@
+/* Estilos para notificaciones del formulario - Vitalkor */
+
+/* Animación para las notificaciones */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Contenedor de notificación flotante */
+.toast-notification {
+  position: fixed;
+  top: 25px;
+  right: 25px;
+  max-width: 320px;
+  min-width: 240px;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-size: 0.9rem;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  animation: slideIn 0.3s ease-out;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+}
+
+/* Variantes de notificación */
+.toast-notification.success {
+  background-color: rgba(240, 255, 240, 0.95);
+  color: #0d6832;
+  border-left: 4px solid var(--primary-color);
+}
+
+.toast-notification.error {
+  background-color: rgba(255, 245, 245, 0.95);
+  color: #842029;
+  border-left: 4px solid #dc3545;
+}
+
+/* Icono de la notificación */
+.toast-notification .icon {
+  margin-right: 12px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenido de la notificación */
+.toast-notification .content {
+  flex: 1;
+}
+
+/* Botón para cerrar la notificación */
+.toast-notification .close-btn {
+  background: none;
+  border: none;
+  color: inherit;
+  font-size: 18px;
+  cursor: pointer;
+  opacity: 0.6;
+  margin-left: 10px;
+  transition: opacity 0.2s;
+}
+
+.toast-notification .close-btn:hover {
+  opacity: 1;
+}
+
+/* Estilos para dispositivos móviles */
+@media (max-width: 576px) {
+  .toast-notification {
+    top: auto;
+    bottom: 20px;
+    left: 20px;
+    right: 20px;
+    max-width: none;
+  }
+}

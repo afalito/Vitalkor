@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/sections.css">
     <link rel="stylesheet" href="css/responsive.css">
     <link rel="stylesheet" href="css/image-optimizations.css">
+    <link rel="stylesheet" href="css/notifications.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -19,7 +20,7 @@
     <header>
         <div class="container header-container">
             <a href="#" class="logo-container">
-                <img src="images/Recurso 2 VITALKOR logo png.png" alt="Logo Vitalkor" class="logo">
+                <img src="images/Recurso 1 VITALKOR logo png.png" alt="Logo Vitalkor" class="logo">
             </a>
             <nav>
                 <ul class="nav-menu">
@@ -225,7 +226,7 @@
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-image">
-                            <img src="images/5.png" alt="María G.">
+                            <i class="fas fa-user-circle"></i>
                         </div>
                         <div class="testimonial-info">
                             <h3>María G.</h3>
@@ -245,7 +246,7 @@
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-image">
-                            <img src="images/5.png" alt="Ana L.">
+                            <i class="fas fa-user-circle"></i>
                         </div>
                         <div class="testimonial-info">
                             <h3>Ana L.</h3>
@@ -264,7 +265,7 @@
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-image">
-                            <img src="images/5.png" alt="Carlos R.">
+                            <i class="fas fa-user-circle"></i>
                         </div>
                         <div class="testimonial-info">
                             <h3>Carlos R.</h3>
@@ -344,7 +345,7 @@
                 <div class="contact-info">
                     <h3>Información de Contacto</h3>
                     <div class="contact-details">
-                        <p><i class="fas fa-envelope"></i> fluxon@fluxon.com.co</p>
+                        <p><i class="fas fa-envelope"></i> andres.arguello@fluxon.com.co</p>
                         <p><i class="fas fa-map-marker-alt"></i> Colombia</p>
                     </div>
                     <h3>Horario de Atención</h3>
@@ -410,7 +411,7 @@
                 <div class="footer-column">
                     <h3>Contacto</h3>
                     <ul>
-                        <li><a href="mailto:fluxon@fluxon.com.co">fluxon@fluxon.com.co</a></li>
+                        <li><a href="mailto:andres.arguello@fluxon.com.co">andres.arguello@fluxon.com.co</a></li>
                         <li><a href="#">Redes Sociales</a></li>
                     </ul>
                 </div>
@@ -422,6 +423,32 @@
     </footer>
 
     <script src="js/main.js"></script>
+    <script src="js/notifications.js"></script>
     <script src="js/form-handler.js"></script>
+    <script>
+        // Funcionalidad para preguntas desplegables (FAQ)
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqItems = document.querySelectorAll('.faq-item');
+    
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    const answer = item.querySelector('.faq-answer');
+                    const icon = question.querySelector('i');
+    
+                    // Alternar la clase activa para mostrar/ocultar la respuesta
+                    answer.classList.toggle('active');
+                    question.classList.toggle('active');
+    
+                    // Cambiar el ícono de flecha
+                    if (icon) {
+                        icon.classList.toggle('fa-chevron-down');
+                        icon.classList.toggle('fa-chevron-up');
+                    }
+                });
+            });
+        });
+    </script>
+
 </body>
 </html>
