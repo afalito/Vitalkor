@@ -105,10 +105,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const formData = new FormData(contactForm);
         contactForm.classList.add('loading');
         
-        // Enviar datos al servidor mediante fetch
-        fetch('send-email.php', {
+        // Enviar datos a Formspree
+        fetch('https://formspree.io/f/andres.arguello@fluxon.com.co', {
             method: 'POST',
-            body: formData
+            body: formData,
+            headers: {
+                'Accept': 'application/json'
+            }
         })
         .then(response => response.json())
         .then(data => {

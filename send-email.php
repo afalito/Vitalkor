@@ -53,12 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         file_put_contents($logFile, date('Y-m-d H:i:s') . " - Nuevo mensaje\n" . $cuerpoMensaje . "\n\n", FILE_APPEND);
         
         // Simular éxito para propósitos de demostración
-        // En producción, descomentar la siguiente línea y comentar la simulación
-        // if (mail($destinatario, $asunto, $cuerpoMensaje, $cabeceras)) {
-        
-        // Simulación: siempre devuelve éxito
-        $success = true;
-        if ($success) {
+        // Envío real del correo
+        if (mail($destinatario, $asunto, $cuerpoMensaje, $cabeceras)) {
             echo json_encode(["success" => true, "message" => "Mensaje enviado con éxito"]);
         } else {
             echo json_encode(["success" => false, "message" => "Error al enviar el mensaje"]);
