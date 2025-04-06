@@ -1,0 +1,20 @@
+[build]
+  publish = "/"
+  
+[forms]
+  # Define el formulario principal de contacto
+  [forms.vitalkor-contacto]
+    name = "vitalkor-contacto"
+    
+[build.processing]
+  skip_processing = false
+  
+[build.processing.html]
+  pretty_urls = true
+
+# Configuración para redirecciones en caso de que quieras personalizar la página de éxito
+[[redirects]]
+  from = "/success"
+  to = "/#contacto?success=true"
+  status = 302
+  force = true

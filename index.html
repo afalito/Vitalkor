@@ -362,8 +362,16 @@
                         <p><i class="fas fa-clock"></i> Sábados: 9:00 AM - 1:00 PM</p>
                     </div>
                 </div>
-                <!-- Formulario básico usando exactamente la estructura recomendada por Formspree -->
-                <form id="contact-form" class="contact-form" action="https://formspree.io/f/xldjoeep" method="POST">
+                <!-- Formulario Netlify: método simple y efectivo para sitios estáticos -->
+                <form id="contact-form" class="contact-form" name="vitalkor-contacto" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <!-- Campo oculto para detectar bots (honeypot) -->
+                    <p class="hidden" style="display:none">
+                        <label>No llenar esto si eres humano: <input name="bot-field" /></label>
+                    </p>
+                    
+                    <!-- Campo oculto requerido por Netlify -->
+                    <input type="hidden" name="form-name" value="vitalkor-contacto" />
+                    
                     <div class="form-control">
                         <label for="name">Nombre Completo</label>
                         <input type="text" id="name" name="name" placeholder="Tu nombre" required>
@@ -389,58 +397,34 @@
                         <label for="message">Mensaje</label>
                         <textarea id="message" name="message" placeholder="Escribe tu mensaje aquí..." required></textarea>
                     </div>
-                    <!-- Agregar campo oculto para honeypot anti-spam -->
-                    <input type="text" name="_gotcha" style="display:none">
                     <div class="form-control">
                         <button type="submit">Enviar Mensaje</button>
                     </div>
                 </form>
-                <!-- Script para Formspree tal como lo recomiendan en su documentación -->
+                
+                <!-- Mensaje de éxito después de enviar -->
+                <div id="success-message" style="display:none" class="success-message">
+                    <i class="fas fa-check-circle"></i> ¡Gracias por tu mensaje! Te contactaremos pronto.
+                </div>
+                
+                <!-- Script para mostrar mensaje de éxito cuando se redirige desde Netlify -->
                 <script>
-                    const form = document.getElementById("contact-form");
-                    
-                    async function handleSubmit(event) {
-                      event.preventDefault();
-                      const status = document.createElement("div");
-                      status.className = "success-message";
-                      form.appendChild(status);
-                      
-                      const data = new FormData(event.target);
-                      
-                      try {
-                        const response = await fetch(event.target.action, {
-                          method: form.method,
-                          body: data,
-                          headers: {
-                            'Accept': 'application/json'
-                          }
-                        });
+                    // Verificar si el usuario regresa después de enviar el formulario
+                    if (window.location.search.includes('success=true') || 
+                        window.location.hash.includes('success=true')) {
+                        document.getElementById('success-message').style.display = 'block';
                         
-                        if (response.ok) {
-                          status.innerHTML = "<i class='fas fa-check-circle'></i> ¡Gracias por tu mensaje! Te contactaremos pronto.";
-                          form.reset();
-                        } else {
-                          const data = await response.json();
-                          if (data.errors) {
-                            status.innerHTML = "<i class='fas fa-exclamation-circle'></i> " + data.errors.map(error => error.message).join(", ");
-                          } else {
-                            status.innerHTML = "<i class='fas fa-exclamation-circle'></i> ¡Oops! Hubo un problema al enviar el formulario.";
-                          }
-                        }
-                        
-                        // Remover mensaje después de 5 segundos
-                        setTimeout(() => {
-                          status.style.opacity = '0';
-                          status.style.transition = 'opacity 0.5s';
-                          setTimeout(() => status.remove(), 500);
+                        // Ocultar el mensaje después de 5 segundos
+                        setTimeout(function() {
+                            const message = document.getElementById('success-message');
+                            message.style.opacity = '0';
+                            message.style.transition = 'opacity 0.5s';
+                            setTimeout(function() {
+                                message.style.display = 'none';
+                                message.style.opacity = '1';
+                            }, 500);
                         }, 5000);
-                        
-                      } catch (error) {
-                        status.innerHTML = "<i class='fas fa-exclamation-circle'></i> ¡Oops! Hubo un problema al enviar el formulario.";
-                      }
                     }
-                    
-                    form.addEventListener("submit", handleSubmit);
                 </script>
             </div>
         </div>
