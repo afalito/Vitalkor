@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
         contactForm.classList.add('loading');
         
         // Enviar datos a Formspree
-        fetch('https://formspree.io/f/andres.arguello@fluxon.com.co', {
+        fetch('https://formspree.io/f/xldjoeep', {
             method: 'POST',
             body: formData,
             headers: {
@@ -117,7 +117,8 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             contactForm.classList.remove('loading');
             
-            if (data.success) {
+            // Formspree devuelve ok:true en lugar de success:true
+            if (data.ok) {
                 // Mostrar mensaje de éxito
                 contactForm.reset();
                 
