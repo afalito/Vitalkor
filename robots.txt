@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /favicon/favicon_instructions.html
+
+Sitemap: https://vitalkor.netlify.app/sitemap.xml

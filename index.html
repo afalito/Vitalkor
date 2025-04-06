@@ -3,8 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vitalkor - Suplemento Nutricional para Mascotas</title>
+    <title>Vitalkor - Suplemento Nutricional 100% Natural para Perros y Gatos</title>
     <meta name="description" content="Vitalkor es un suplemento nutricional 100% natural para perros y gatos que fortalece defensas, embellece el pelaje, mejora la digestión y reduce el olor de las heces.">
+    
+    <!-- Metadatos SEO -->
+    <meta name="keywords" content="Vitalkor, suplemento nutricional, mascotas, perros, gatos, salud animal, pelaje, defensas, digestión, vitaminas para mascotas">
+    <meta name="author" content="Vitalkor">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="Spanish">
+    <meta name="revisit-after" content="7 days">
+    <link rel="canonical" href="https://vitalkor.netlify.app/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://vitalkor.netlify.app/">
+    <meta property="og:title" content="Vitalkor - Suplemento Nutricional 100% Natural para Mascotas">
+    <meta property="og:description" content="Suplemento nutricional que fortalece defensas, embellece el pelaje y mejora la digestión de perros y gatos.">
+    <meta property="og:image" content="https://vitalkor.netlify.app/images/Recurso 2MOCKUP VITALKOR final corregido .png">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://vitalkor.netlify.app/">
+    <meta property="twitter:title" content="Vitalkor - Suplemento Nutricional para Mascotas">
+    <meta property="twitter:description" content="Suplemento nutricional que fortalece defensas, embellece el pelaje y mejora la digestión de perros y gatos.">
+    <meta property="twitter:image" content="https://vitalkor.netlify.app/images/Recurso 2MOCKUP VITALKOR final corregido .png">
+    
     <!-- Favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon/favicon-32x32.png">
@@ -12,6 +35,7 @@
     <link rel="icon" type="image/svg+xml" href="favicon/favicon.svg">
     <link rel="manifest" href="favicon/site.webmanifest">
     <meta name="theme-color" content="#00b2a9">
+    
     <!-- Styles -->
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/sections.css">
@@ -22,6 +46,33 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Datos estructurados para SEO (Schema.org) -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Product",
+        "name": "Vitalkor",
+        "image": "https://vitalkor.netlify.app/images/Recurso 2MOCKUP VITALKOR final corregido .png",
+        "description": "Suplemento nutricional 100% natural para perros y gatos que fortalece defensas, embellece el pelaje, mejora la digestión y reduce el olor de las heces.",
+        "brand": {
+            "@type": "Brand",
+            "name": "Vitalkor"
+        },
+        "offers": {
+            "@type": "Offer",
+            "url": "https://vitalkor.netlify.app/#promociones",
+            "priceCurrency": "COP",
+            "price": "79900",
+            "availability": "https://schema.org/InStock"
+        },
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "reviewCount": "125"
+        }
+    }
+    </script>
 </head>
 <body>
     <!-- Header -->
@@ -406,26 +457,6 @@
                 <div id="success-message" style="display:none" class="success-message">
                     <i class="fas fa-check-circle"></i> ¡Gracias por tu mensaje! Te contactaremos pronto.
                 </div>
-                
-                <!-- Script para mostrar mensaje de éxito cuando se redirige desde Netlify -->
-                <script>
-                    // Verificar si el usuario regresa después de enviar el formulario
-                    if (window.location.search.includes('success=true') || 
-                        window.location.hash.includes('success=true')) {
-                        document.getElementById('success-message').style.display = 'block';
-                        
-                        // Ocultar el mensaje después de 5 segundos
-                        setTimeout(function() {
-                            const message = document.getElementById('success-message');
-                            message.style.opacity = '0';
-                            message.style.transition = 'opacity 0.5s';
-                            setTimeout(function() {
-                                message.style.display = 'none';
-                                message.style.opacity = '1';
-                            }, 500);
-                        }, 5000);
-                    }
-                </script>
             </div>
         </div>
     </section>
@@ -466,9 +497,12 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
-    <script src="js/notifications.js"></script>
-    <script src="js/form-handler.js"></script>
+    <!-- Scripts con carga diferida para mejor rendimiento -->
+    <script src="js/notifications.js" defer></script>
+    <script src="js/form-handler.js" defer></script>
+    <script src="js/main.js" defer></script>
+    
+    <!-- Script para FAQ -->
     <script>
         // Funcionalidad para preguntas desplegables (FAQ)
         document.addEventListener('DOMContentLoaded', function () {
@@ -493,6 +527,16 @@
             });
         });
     </script>
-
+    
+    <!-- Google tag (gtag.js) - Añadir esto después cuando tengas un ID de seguimiento -->
+    <!-- 
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    -->
 </body>
 </html>
