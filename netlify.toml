@@ -18,3 +18,10 @@
   to = "/#contacto?success=true"
   status = 302
   force = true
+
+# Redirección de Netlify a dominio personalizado
+[[redirects]]
+  from = "https://vitalkor.netlify.app/*"
+  to = "https://vitalkor.shop/:splat"
+  status = 301
+  force = true
